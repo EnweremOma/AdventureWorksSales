@@ -1,0 +1,47 @@
+﻿@model AdventureWorksSales.Web.ViewModels.ProductListingViewModels
+
+@if (Model != null && Model.Products != null && Model.Products.Count() > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> Name</th>
+                <th scope="col"> Product Number</th>
+                <th scope="col"> Color</th>
+                <th scope="col"> Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+
+                    <td>
+                        @product.Name
+                    </td>
+                    <td>
+                        @product.ProductNumber
+                    </td>
+
+                    <td>
+                        @product.Color
+                    </td>
+
+                    <td>
+                        <button type="button" class="data-btn btn btn-primary" data-toggle="modal" data-target="#productCategory" data-url="@Url.Action($"Edit/{product.ProductID}")">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Sorry, No records exist.
+    </div>
+}

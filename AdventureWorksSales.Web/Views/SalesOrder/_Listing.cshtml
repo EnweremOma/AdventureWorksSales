@@ -1,0 +1,47 @@
+﻿@model AdventureWorksSales.Web.ViewModels.SalesOrderListingViewModels
+
+@if (Model != null && Model.SalesOrders != null && Model.SalesOrders.Count() > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> CarrierTrackingNumber</th>
+                <th scope="col"> OrderQty</th>
+                <th scope="col"> UnitPrice</th>
+                <th scope="col"> Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var salesOrder in Model.SalesOrders)
+            {
+                <tr>
+
+                    <td>
+                        @salesOrder.CarrierTrackingNumber
+                    </td>
+                    <td>
+                        @salesOrder.OrderQty
+                    </td>
+
+                    <td>
+                        @salesOrder.UnitPrice
+                    </td>
+
+                    <td>
+                        <button type="button" class="data-btn btn btn-primary" data-toggle="modal" data-target="#productCategory" data-url="@Url.Action($"Edit/{salesOrder.SalesOrderID}")">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Sorry, No records exist.
+    </div>
+}

@@ -1,0 +1,23 @@
+﻿@model AdventureWorksSales.Web.ViewModels.ProductListingViewModels
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">PRODUCTS</h1>
+</div>
+
+
+<div class="row">
+    <div class="col col-lg-12">
+        @{
+            Html.RenderPartial("_listing", Model);
+        }
+    </div>
+    <div>
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+</div>
+

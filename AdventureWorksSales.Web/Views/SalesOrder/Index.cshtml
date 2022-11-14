@@ -1,0 +1,30 @@
+﻿@model AdventureWorksSales.Web.ViewModels.SalesOrderListingViewModels
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Sales Orders</h1>
+</div>
+
+<div class="float-end">
+    <button type="button" class="data-btn btn btn-success" data-toggle="modal" data-target="#productCategory">
+        Create New Product Category
+    </button>
+
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        @{
+            Html.RenderPartial("_listing", Model);
+        }
+    </div>
+    <div>
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+</div>
+
+
